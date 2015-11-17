@@ -1,0 +1,13 @@
+echo "Working directory: "; read wd # type it in, or drag and drop
+echo "Current extension: "; read e1 
+echo "New extension :"; read e2
+
+if [[ $e1 == \.* ]] && [[ $e2 == \.* ]]; then # checks whether variables begin with a leading period.
+	cd $wd
+
+	for file in *$e1
+	do
+		mv "$file" "${file%$e1}$e2" # the actual renaming begins here
+	done
+	exit;
+fi
